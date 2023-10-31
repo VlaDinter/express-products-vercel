@@ -12,6 +12,7 @@ export type ProductType = {
 const url = process.env.MONGO_URL;
 
 console.log('url', url);
+
 if (!url) {
     throw new Error('! Url doesn\'t found');
 }
