@@ -1,4 +1,7 @@
 import { MongoClient, ObjectId } from 'mongodb';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 export type ProductType = {
     title: string,
@@ -6,9 +9,12 @@ export type ProductType = {
 };
 
 // Connection URL
-const url = 'mongodb+srv://admin:admin@cluster0.xnbydka.mongodb.net/shop-dev?retryWrites=true&w=majority';
+const url = process.env.MONGO_URL;
 
 console.log('url', url);
+if (!url) {
+    throw new Error('! Url doesn\'t found');
+}
 
 const client = new MongoClient(url);
 
